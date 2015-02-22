@@ -12,6 +12,10 @@
      echo '<br>output:</br>';
      $city = $json->{'current_observation'}->{'city'};
      echo ("city: ${city}\n")
+
+     $temp_f = $json->{'current_observation'}->{'temp_f'};
+     echo "Current temperature is: ${temp_f}\n";
+
     ?>
   </body>
 </html>
