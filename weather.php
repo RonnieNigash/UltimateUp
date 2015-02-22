@@ -9,15 +9,15 @@
      print_r ($json);
      echo ('</pre>');
 
-     echo $json->location->city;
+     print_r $json->location->city;
      echo $json->response->version;
      echo $json->display_location->full;
-     echo $json->$location->$city;
+     print_r $json->$location->$city;
      echo $json->$response->$version;
      echo $json->$display_location->$full;
-     echo $json->{location}->{city};
-     echo $json->{response}->{version};
-     echo $json->{display_location}>{full};
+     //echo $json->{location}->{city};
+     //echo $json->{response}->{version};
+     //echo $json->{display_location}>{full};
     ?>
   </body>
 </html>
