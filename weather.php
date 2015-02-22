@@ -6,23 +6,12 @@
      $json = json_decode($data, true);
 
      echo ('<pre> print the json ');
-     //print_r ($json);
+     print_r ($json);
      echo ('</pre>');
 
      echo '<br>output:</br>';
-
-     foreach ($json as $key => $value) {
-       switch ($key) {
-         case 'city' :
-          echo "City: $value";
-          break;
-         case 'wind_mph' :
-          echo "Wind Speed: $value MPH";
-          break;
-         case 'wind_dir' :
-          break;
-       }
-     }
+     $city = $json->current_observation->city;
+     echo ('city: $city')
     ?>
   </body>
 </html>
