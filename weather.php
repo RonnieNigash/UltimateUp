@@ -9,13 +9,15 @@
      print_r ($json);
      echo ('</pre>');
 
-     echo '<br>output:</br>';
-     $city = $json->{'current_observation'}->{'city'};
-     echo ("city: ${city}\n")
-
-     $temp_f = $json->{'current_observation'}->{'temp_f'};
-     echo "Current temperature is: ${temp_f}\n";
-
+     echo $json->location->city;
+     echo $json->response->version;
+     echo $json->display_location->full;
+     echo $json->$location->$city;
+     echo $json->$response->$version;
+     echo $json->$display_location->$full;
+     echo $json->{location}->{city};
+     echo $json->{response}->{version};
+     echo $json->{display_location}>{full};
     ?>
   </body>
 </html>
