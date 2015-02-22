@@ -10,8 +10,8 @@
      echo ('</pre>');
 
      echo '<br>output:</br>';
-     $city = $json->current_observation->city;
-     echo ('city: $city')
+     $thing = $json->current_observation->city;
+     echo ("city: $thing")
     ?>
   </body>
 </html>
