@@ -15,9 +15,9 @@
      echo $json->$location->$city;
      echo $json->$response->$version;
      echo $json->$display_location->$full;
-     echo $json->{location}->{city};
-     echo $json->{response}->{version};
-     echo $json->{display_location}>{full};
+     //echo $json->{location}->{city};
+     //echo $json->{response}->{version};
+     //echo $json->{display_location}>{full};
     ?>
   </body>
 </html>
