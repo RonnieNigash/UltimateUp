@@ -19,39 +19,40 @@
 
     <script type="text/javascript">
     // Builds the HTML Table out of myList json data from Ivy restful service.
+    var myList =
+      [{
+        "Throw": "5",
+        "Distance": "20",
+        "Speed": "50",
+        "Stability": "10"
+      },
+      {
+        "Throw": "4",
+        "Distance": "40",
+        "Speed": "30",
+        "Stability": "40"
+      },
+      {
+        "Throw": "3",
+        "Distance": "120",
+        "Speed": "30",
+        "Stability": "50"
+      },
+      {
+        "Throw": "2",
+        "Distance": "40",
+        "Speed": "10",
+        "Stability": "100"
+      },
+      {
+        "Throw": "1",
+        "Dstance": "40",
+        "Speed": "30",
+        "Stability":"60"
+      }
+    ]
      function buildHtmlTable2() {
-       var myList =
-         [{
-           "Throw": "5",
-           "Distance": "20",
-           "Speed": "50",
-           "Stability": "10"
-         },
-         {
-           "Throw": "4",
-           "Distance": "40",
-           "Speed": "30",
-           "Stability": "40"
-         },
-         {
-           "Throw": "3",
-           "Distance": "120",
-           "Speed": "30",
-           "Stability": "50"
-         },
-         {
-           "Throw": "2",
-           "Distance": "40",
-           "Speed": "10",
-           "Stability": "100"
-         },
-         {
-           "Throw": "1",
-           "Dstance": "40",
-           "Speed": "30",
-           "Stability":"60"
-         }
-       ]
+
          var columns = addAllColumnHeaders2(myList);
 
          for (var i = 0 ; i < myList.length ; i++) {
@@ -67,9 +68,6 @@
          }
      }
 
-     // Adds a header row to the table and returns the set of columns.
-     // Need to do union of keys from all records as some records may not contain
-     // all records
      function addAllColumnHeaders2(myList)
      {
          var columnSet = [];
