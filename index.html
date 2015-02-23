@@ -8,88 +8,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>UltimateUp</title>
+    <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
-    <script src = "js/buildHtmlTable.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    <script type="text/javascript">
-    // Builds the HTML Table out of myList json data from Ivy restful service.
-    var myList =
-      [{
-        "Throw": "5",
-        "Distance": "20",
-        "Speed": "50",
-        "Stability": "10"
-      },
-      {
-        "Throw": "4",
-        "Distance": "40",
-        "Speed": "30",
-        "Stability": "40"
-      },
-      {
-        "Throw": "3",
-        "Distance": "120",
-        "Speed": "30",
-        "Stability": "50"
-      },
-      {
-        "Throw": "2",
-        "Distance": "40",
-        "Speed": "10",
-        "Stability": "100"
-      },
-      {
-        "Throw": "1",
-        "Dstance": "40",
-        "Speed": "30",
-        "Stability":"60"
-      }
-    ]
-     function buildHtmlTable2() {
-
-         var columns = addAllColumnHeaders2(myList);
-
-         for (var i = 0 ; i < myList.length ; i++) {
-             var row$ = $('<tr/>');
-             for (var colIndex = 0 ; colIndex < columns.length ; colIndex++) {
-                 var cellValue = myList[i][columns[colIndex]];
-
-                 if (cellValue == null) { cellValue = ""; }
-
-                 row$.append($('<td/>').html(cellValue));
-             }
-             $("#recordDataTable").append(row$);
-         }
-     }
-
-     function addAllColumnHeaders2(myList)
-     {
-         var columnSet = [];
-         var headerTr$ = $('<tr/>');
-
-         for (var i = 0 ; i < myList.length ; i++) {
-             var rowHash = myList[i];
-             for (var key in rowHash) {
-                 if ($.inArray(key, columnSet) == -1){
-                     columnSet.push(key);
-                     headerTr.append($('<th/>').html(key));
-                 }
-             }
-         }
-         $("#recordDataTable").append(headerTr$);
-
-         return columnSet;
-     }
-     buildHtmlTable2();
-
-    </script>
-
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -97,12 +22,16 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src = "js/buildHtmlTable.js"></script>
+    <script src="js/relayr-browser-sdk.min.js"></script>
+    <script src = "js/wunderbarinfo.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   </head>
 
-  <body onload = "buildHtmlTable()">
+  <body onload="buildHtmlTable()">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -112,13 +41,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a  class="navbar-brand" href="#"><font color="red">UltimateUP</font></a>
+          <a class="navbar-brand" href="#">UltimateUp!</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
             <li><a href="#">Login</a></li>
-            <li><a href="#">Signup</a></li>
+            <li><a href="#">Sign Up</a></li>
           </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
         </div>
       </div>
     </nav>
@@ -128,56 +62,54 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#Latest-Run">Latest Run</a></li>
-            <li><a href="#Records">Records</a></li>
-            <li><a href="#Leaderboard">Leaderboard</a></li>
-            <li><a href="#Weather">Weather</a></li>
+            <li><a href="#">Latest Run</a></li>
+            <li><a href="#">Records</a></li>
+            <li><a href="#">Leaderboard</a></li>
           </ul>
+          <!--
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        -->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="page-header">Latest Run</h2>
+          <h1 class="page-header">Latest Throw</h1>
+
           <div class="row placeholders" id = "thumbs">
             <div class="col-xs-6 col-sm-3 placeholder" id = "elem1">
               <i class="fa fa-bolt fa-5x "></i>
-
-              <span class="text-muted"></span>
+              <span class="text-muted">pitch</span>
               <input type="text" id="pitch">
               <input type="text" id="yaw">
               <input type="text" id="roll">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder" id = "elem2">
               <i class="fa fa-arrows-h"></i>
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4>10</h4>
+              <span class="text-muted">Distance</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder" id = "elem3">
               <i class="fa fa-line-chart"></i>
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <h4>15%</h4>
+              <span class="text-muted">Stability</span>
             </div>
             <span class="stretch"></span>
           </div>
 
-          <h2 class="sub-header">Records</h2>
-          <div class="table-responsive">
-
-            <table class="table table-striped"  id="recordDataTable" border="1">
-
-            </table>
-          </div>
-
           <h2 class="sub-header">Leaderboard</h2>
-          <div class="table-responsive">
+          <div class="table-responsive" id="leaderboard">
             <table class="table table-striped"  id="excelDataTable" border="1">
 
             </table>
-          </div>
-
-          <h2 class="sub-header">Weather</h2>
-          <div id = "weather" >
-
           </div>
         </div>
       </div>
